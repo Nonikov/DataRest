@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{412FD603-6EEC-4C3F-84F8-E57B0A754A56}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <RootNamespace>DalRest</RootNamespace>
-    <AssemblyName>DalRest</AssemblyName>
+    <ProjectGuid>{654E915D-CAFC-4D0E-BC91-20373F5A587E}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>ConsoleRest</RootNamespace>
+    <AssemblyName>ConsoleRest</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -31,9 +31,6 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -45,16 +42,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Facade.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DataRest\DataRest.csproj">
-      <Project>{d2a86f49-8c10-4bab-b51e-96a981d87c2e}</Project>
-      <Name>DataRest</Name>
+    <ProjectReference Include="..\DalRest\DalRest.csproj">
+      <Project>{412fd603-6eec-4c3f-84f8-e57b0a754a56}</Project>
+      <Name>DalRest</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
