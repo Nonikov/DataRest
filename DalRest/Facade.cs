@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data.Common;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DataRest;
 
 namespace DalRest
@@ -23,11 +18,14 @@ namespace DalRest
         // ProductTypes
         public void AddProductTypes(string type)
         {
-            command.CommandText = "EXEC sp_AddProductTypes '" + type + "'";
+            if (type != "")
+            {
+                command.CommandText = "EXEC sp_AddProductTypes '" + type + "'";
+            }
             command.ExecuteNonQuery();
         }
 
-        public DataTable GetProductTypes() 
+        public DataTable GetProductTypes()
         {
             command.CommandText = "sp_GetProductTypes";
             command.CommandType = CommandType.StoredProcedure;
@@ -42,11 +40,14 @@ namespace DalRest
         // Measures
         public void AddMeasureType(string type)
         {
-            command.CommandText = "EXEC sp_AddMeasureTypes '" + type + "'";
-            command.ExecuteNonQuery();
+            if (type != "")
+            {
+                command.CommandText = "EXEC sp_AddMeasureTypes '" + type + "'";
+                command.ExecuteNonQuery();
+            }
         }
 
-        public DataTable GetMeasureType()   
+        public DataTable GetMeasureType()
         {
             command.CommandText = "sp_GetMeasuresTypes";
             command.CommandType = CommandType.StoredProcedure;
@@ -61,11 +62,14 @@ namespace DalRest
         // Products
         public void AddProduct(string name, string productTypes, string measure)
         {
-            command.CommandText = "EXEC sp_AddProduct '" + name + "', '" + productTypes + "', '" + measure + "'";
+            if (name != "" && productTypes != "" && measure != "")
+            {
+                command.CommandText = "EXEC sp_AddProduct '" + name + "', '" + productTypes + "', '" + measure + "'";
+            }
             command.ExecuteNonQuery();
         }
 
-        public DataTable GetProducts()    
+        public DataTable GetProducts()
         {
             command.CommandText = "sp_GetProducts";
             command.CommandType = CommandType.StoredProcedure;
@@ -80,7 +84,10 @@ namespace DalRest
         // Purchases
         public void AddPurchase(string name, int price, int quantity)
         {
-            command.CommandText = "EXEC sp_AddPurchase'" + name + "', '" + price + "', '" + quantity + "'";
+            if (name != "" && price != 0 && quantity != 0)
+            {
+                command.CommandText = "EXEC sp_AddPurchase'" + name + "', '" + price + "', '" + quantity + "'";
+            }
             command.ExecuteNonQuery();
         }
 
@@ -97,13 +104,16 @@ namespace DalRest
         }
 
         // Dishes
-        public void AddDishe(string name, string measureType)       
+        public void AddDishe(string name, string measureType)
         {
-            command.CommandText = "EXEC sp_AddDish'" + name + "', '" + measureType + "'";
+            if (name != "" && measureType != "")
+            {
+                command.CommandText = "EXEC sp_AddDish'" + name + "', '" + measureType + "'";
+            }
             command.ExecuteNonQuery();
         }
 
-        public DataTable GetDishes()    
+        public DataTable GetDishes()
         {
             command.CommandText = "sp_GetDishes";
             command.CommandType = CommandType.StoredProcedure;
@@ -116,9 +126,12 @@ namespace DalRest
         }
 
         // ProdConsumptions
-        public void AddConsumption(string disheName, string prodName, int quantity)
+        public void AddConsumption(string dishName, string prodName, int quantity)
         {
-            command.CommandText = "EXEC sp_AddConsumption'" + disheName + "', '" + prodName + "', '" + quantity + "'";
+            if (dishName != "" && prodName != "" && quantity != 0)
+            {
+                command.CommandText = "EXEC sp_AddConsumption'" + dishName + "', '" + prodName + "', '" + quantity + "'";
+            }
             command.ExecuteNonQuery();
         }
 
@@ -135,9 +148,12 @@ namespace DalRest
         }
 
         // Sales
-        public void AddSale(string dishName, int price, int quantity)   
+        public void AddSale(string dishName, int price, int quantity)
         {
-            command.CommandText = "EXEC sp_AddSale'" + dishName + "', '" + price + "', '" + quantity + "'";
+            if (dishName != "" && price != 0 && quantity != 0)
+            {
+                command.CommandText = "EXEC sp_AddSale'" + dishName + "', '" + price + "', '" + quantity + "'";
+            }
             command.ExecuteNonQuery();
         }
 
@@ -156,7 +172,10 @@ namespace DalRest
         // Recipes
         public void AddRecipe(string recipeName, string recipeText)
         {
-            command.CommandText = "EXEC sp_AddRecipe'" + recipeName + "', '" + recipeText + "'";
+            if (recipeName != "" && recipeText != "")
+            {
+                command.CommandText = "EXEC sp_AddRecipe'" + recipeName + "', '" + recipeText + "'";
+            }
             command.ExecuteNonQuery();
         }
 

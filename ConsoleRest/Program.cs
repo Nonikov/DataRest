@@ -14,9 +14,9 @@ namespace ConsoleRest
 
             Facade facade = new Facade();
 
-            facade.DropAllTables();
+//facade.DropAllTables();
 
-            //facade.AddProductTypes("fruit");
+         //   facade.AddProductTypes("fru");
             //facade.AddMeasureType("ml");
             //facade.AddMeasureType("kg");
             //facade.AddProduct("orange", "fruit", "kg");

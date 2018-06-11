@@ -7,9 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataRest", "DataRest\DataRe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DalRest", "DalRest\DalRest.csproj", "{412FD603-6EEC-4C3F-84F8-E57B0A754A56}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleRest", "ConsoleRest\ConsoleRest.csproj", "{654E915D-CAFC-4D0E-BC91-20373F5A587E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApp1", "WindowsFormsApp1\WindowsFormsApp1.csproj", "{060EED90-5AF3-4808-8414-EC45DEBC76F5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wfRestaurant", "WindowsFormsApp1\wfRestaurant.csproj", "{060EED90-5AF3-4808-8414-EC45DEBC76F5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DalRest.Test", "DalRest.Test\DalRest.Test.csproj", "{B9396034-9208-4636-A53C-E507802ACD7F}"
 EndProject
@@ -27,10 +25,6 @@ Global
 		{412FD603-6EEC-4C3F-84F8-E57B0A754A56}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{412FD603-6EEC-4C3F-84F8-E57B0A754A56}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{412FD603-6EEC-4C3F-84F8-E57B0A754A56}.Release|Any CPU.Build.0 = Release|Any CPU
-		{654E915D-CAFC-4D0E-BC91-20373F5A587E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{654E915D-CAFC-4D0E-BC91-20373F5A587E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{654E915D-CAFC-4D0E-BC91-20373F5A587E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{654E915D-CAFC-4D0E-BC91-20373F5A587E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{060EED90-5AF3-4808-8414-EC45DEBC76F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{060EED90-5AF3-4808-8414-EC45DEBC76F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{060EED90-5AF3-4808-8414-EC45DEBC76F5}.Release|Any CPU.ActiveCfg = Release|Any CPU

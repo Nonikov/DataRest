@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace DataRest
 {
@@ -37,11 +33,8 @@ namespace DataRest
             CreateTbSales();
             CreateTbPurchases();
             AddStoredProcedures();
-        }
 
-        ~DbRest()
-        {
-            connection.Close();
+            AppDomain.CurrentDomain.ProcessExit += (object sender, EventArgs e) => connection.Close();
         }
 
         #region DeployingDb
@@ -71,7 +64,7 @@ namespace DataRest
         private void CreateTbRecipes()
         {
             string sql = "if object_id(N'Recipes',N'U') IS NULL CREATE TABLE Recipes" +
-                "(Id smallint IDENTITY NOT NULL PRIMARY KEY, RecipeName varchar(20)  NOT NULL UNIQUE, RecipeText varchar(max) NOT NULL)";
+                "(Id smallint IDENTITY NOT NULL PRIMARY KEY, RecipeName varchar(20)  NOT NULL UNIQUE , RecipeText varchar(max) NOT NULL)";
             command.CommandText = sql;
             command.ExecuteNonQuery();
         }
@@ -215,7 +208,6 @@ namespace DataRest
             command.CommandText = "CREATE PROC sp_GetRecipes AS SELECT * FROM Recipes";
             command.ExecuteNonQuery();
         }
-
 
     }
 }

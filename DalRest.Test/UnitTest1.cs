@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using DalRest;
+using System.Threading;
 
 namespace DalRest.Test
 {
@@ -8,6 +9,8 @@ namespace DalRest.Test
     public class UnitTest1
     {
         Facade facade;
+
+        // THE DATABASE MUST BE EMPTY (if not empty, drop it in the application)
 
         [TestInitialize]
         public void InitializeCurrentTest()
@@ -17,7 +20,7 @@ namespace DalRest.Test
 
         [TestMethod]
         [Priority(0)]
-        public void Test_Add_Get_ProductTypes()  
+        public void Test_Add_Get_ProductTypes()
         {
             string item = "vegetable";
             string expected = "vegetable";
@@ -30,7 +33,7 @@ namespace DalRest.Test
 
         [TestMethod]
         [Priority(1)]
-        public void Test_Add_Get_Measures() 
+        public void Test_Add_Get_Measures()
         {
             string item = "kg";
             string expected = "kg";
@@ -76,8 +79,8 @@ namespace DalRest.Test
 
             facade.AddPurchase(item1, item2, item3);
             string actual1 = (facade.GetPurchases().Rows[0].ItemArray[1].ToString());
-            double actual2 = (Convert.ToDouble( facade.GetPurchases().Rows[0].ItemArray[3]));
-            int actual3 = (Convert.ToInt32( facade.GetPurchases().Rows[0].ItemArray[4]));
+            double actual2 = (Convert.ToDouble(facade.GetPurchases().Rows[0].ItemArray[3]));
+            int actual3 = (Convert.ToInt32(facade.GetPurchases().Rows[0].ItemArray[4]));
 
             Assert.AreEqual(expected1, actual1);
             Assert.AreEqual(expected2, actual2);
