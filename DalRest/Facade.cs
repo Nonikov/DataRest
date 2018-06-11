@@ -82,7 +82,7 @@ namespace DalRest
         }
 
         // Purchases
-        public void AddPurchase(string name, int price, int quantity)
+        public void AddPurchase(string name, decimal price, int quantity)
         {
             if (name != "" && price != 0 && quantity != 0)
             {
@@ -126,7 +126,7 @@ namespace DalRest
         }
 
         // ProdConsumptions
-        public void AddConsumption(string dishName, string prodName, int quantity)
+        public void AddConsumption(string dishName, string prodName, float quantity)
         {
             if (dishName != "" && prodName != "" && quantity != 0)
             {
@@ -148,7 +148,7 @@ namespace DalRest
         }
 
         // Sales
-        public void AddSale(string dishName, int price, int quantity)
+        public void AddSale(string dishName, decimal price, int quantity)
         {
             if (dishName != "" && price != 0 && quantity != 0)
             {

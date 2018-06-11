@@ -79,8 +79,8 @@ namespace DalRest.Test
 
             facade.AddPurchase(item1, item2, item3);
             string actual1 = (facade.GetPurchases().Rows[0].ItemArray[1].ToString());
-            double actual2 = (Convert.ToDouble(facade.GetPurchases().Rows[0].ItemArray[3]));
-            int actual3 = (Convert.ToInt32(facade.GetPurchases().Rows[0].ItemArray[4]));
+            double actual2 = (Convert.ToDouble(facade.GetPurchases().Rows[0].ItemArray[2]));
+            int actual3 = (Convert.ToInt32(facade.GetPurchases().Rows[0].ItemArray[3]));
 
             Assert.AreEqual(expected1, actual1);
             Assert.AreEqual(expected2, actual2);
