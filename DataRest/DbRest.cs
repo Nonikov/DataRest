@@ -29,7 +29,6 @@ namespace DataRest
             CreateTbProducts();
             CreateTbDishes();
             CreateTbRecipes();
-            
             CreateTbProdConsumptions();
             CreateTbSales();
             CreateTbPurchases();
@@ -139,83 +138,98 @@ namespace DataRest
         private void AddStoredProcedures()
         {
             // Stored Procedures of the table ProductTypes
-            command.CommandText = "IF EXISTS (SELECT type_desc, type FROM sys.procedures WITH(NOLOCK) WHERE NAME = 'sp_AddProductTypes' AND type = 'P') " +
+            command.CommandText = "IF EXISTS (SELECT type_desc, type FROM sys.procedures WITH(NOLOCK) " +
+                "WHERE NAME = 'sp_AddProductTypes' AND type = 'P') " +
                 "DROP PROCEDURE dbo.sp_AddProductTypes";
             command.ExecuteNonQuery();
-            command.CommandText = "CREATE PROC sp_AddProductTypes @ProdType varchar(20) AS BEGIN INSERT INTO ProductTypes(ProdType) values (@ProdType) END;";
+            command.CommandText = "CREATE PROC sp_AddProductTypes @ProdType varchar(20) " +
+                "AS BEGIN INSERT INTO ProductTypes(ProdType) values (@ProdType) END;";
             command.ExecuteNonQuery();
 
-            command.CommandText = "IF EXISTS (SELECT type_desc, type FROM sys.procedures WITH(NOLOCK) WHERE NAME = 'sp_GetProductTypes' AND type = 'P') " +
+            command.CommandText = "IF EXISTS (SELECT type_desc, type FROM sys.procedures WITH(NOLOCK) " +
+                "WHERE NAME = 'sp_GetProductTypes' AND type = 'P') " +
                 "DROP PROCEDURE dbo.sp_GetProductTypes";
             command.ExecuteNonQuery();
             command.CommandText = "CREATE PROC sp_GetProductTypes AS SELECT * FROM ProductTypes";
             command.ExecuteNonQuery();
 
             // Stored Procedures of the table MeasureTypes
-            command.CommandText = "IF EXISTS (SELECT type_desc, type FROM sys.procedures WITH(NOLOCK) WHERE NAME = 'sp_AddMeasureTypes' AND type = 'P') " +
+            command.CommandText = "IF EXISTS (SELECT type_desc, type FROM sys.procedures WITH(NOLOCK) " +
+                "WHERE NAME = 'sp_AddMeasureTypes' AND type = 'P') " +
                 "DROP PROCEDURE dbo.sp_AddMeasureTypes";
             command.ExecuteNonQuery();
-            command.CommandText = "CREATE PROC sp_AddMeasureTypes @MeasureType varchar(10) AS BEGIN INSERT INTO Measures (MeasureType) values (@MeasureType) END;";
+            command.CommandText = "CREATE PROC sp_AddMeasureTypes @MeasureType varchar(10) " +
+                "AS BEGIN INSERT INTO Measures (MeasureType) values (@MeasureType) END;";
             command.ExecuteNonQuery();
 
-            command.CommandText = "IF EXISTS (SELECT type_desc, type FROM sys.procedures WITH(NOLOCK) WHERE NAME = 'sp_GetMeasuresTypes' AND type = 'P') " +
+            command.CommandText = "IF EXISTS (SELECT type_desc, type FROM sys.procedures WITH(NOLOCK) " +
+                "WHERE NAME = 'sp_GetMeasuresTypes' AND type = 'P') " +
                 "DROP PROCEDURE dbo.sp_GetMeasuresTypes";
             command.ExecuteNonQuery();
             command.CommandText = "CREATE PROC sp_GetMeasuresTypes AS SELECT * FROM Measures";
             command.ExecuteNonQuery();
 
             // Stored Procedures of the table Products
-            command.CommandText = "IF EXISTS (SELECT type_desc, type FROM sys.procedures WITH(NOLOCK) WHERE NAME = 'sp_AddProduct' AND type = 'P') " +
+            command.CommandText = "IF EXISTS (SELECT type_desc, type FROM sys.procedures WITH(NOLOCK) " +
+                "WHERE NAME = 'sp_AddProduct' AND type = 'P') " +
                 "DROP PROCEDURE dbo.sp_AddProduct";
             command.ExecuteNonQuery();
             command.CommandText = "CREATE PROC sp_AddProduct @Name varchar(20), @ProdType varchar(20), @MeasureType varchar(10) " +
                 "AS BEGIN INSERT INTO Products (Name, ProdType, MeasureType) values (@Name, @ProdType, @MeasureType) END;";
             command.ExecuteNonQuery();
 
-            command.CommandText = "IF EXISTS (SELECT type_desc, type FROM sys.procedures WITH(NOLOCK) WHERE NAME = 'sp_GetProducts' AND type = 'P') " +
+            command.CommandText = "IF EXISTS (SELECT type_desc, type FROM sys.procedures WITH(NOLOCK)" +
+                " WHERE NAME = 'sp_GetProducts' AND type = 'P') " +
                 "DROP PROCEDURE dbo.sp_GetProducts";
             command.ExecuteNonQuery();
             command.CommandText = "CREATE PROC sp_GetProducts AS SELECT Name, ProdType, MeasureType FROM Products";
             command.ExecuteNonQuery();
 
             //Stored Procedures of the table Purchases
-            command.CommandText = "IF EXISTS (SELECT type_desc, type FROM sys.procedures WITH(NOLOCK) WHERE NAME = 'sp_AddPurchase' AND type = 'P') " +
+            command.CommandText = "IF EXISTS (SELECT type_desc, type FROM sys.procedures WITH(NOLOCK) " +
+                "WHERE NAME = 'sp_AddPurchase' AND type = 'P') " +
                 "DROP PROCEDURE dbo.sp_AddPurchase";
             command.ExecuteNonQuery();
             command.CommandText = "CREATE PROC sp_AddPurchase @ProdName Varchar(20), @Price money, @Quantity int " +
                 "AS BEGIN INSERT INTO Purchases (ProdName, Price, Quantity) values (@ProdName, @Price, @Quantity) END;";
             command.ExecuteNonQuery();
 
-            command.CommandText = "IF EXISTS (SELECT type_desc, type FROM sys.procedures WITH(NOLOCK) WHERE NAME = 'sp_GetPurchases' AND type = 'P') " +
+            command.CommandText = "IF EXISTS (SELECT type_desc, type FROM sys.procedures WITH(NOLOCK) " +
+                "WHERE NAME = 'sp_GetPurchases' AND type = 'P') " +
                 "DROP PROCEDURE dbo.sp_GetPurchases";
             command.ExecuteNonQuery();
-            command.CommandText = "CREATE PROC sp_GetPurchases AS SELECT Purchases.Id, Purchases.ProdName, Purchases.Price, Purchases.Quantity, Products.MeasureType as Measure " +
+            command.CommandText = "CREATE PROC sp_GetPurchases " +
+                "AS SELECT Purchases.Id, Purchases.ProdName, Purchases.Price, Purchases.Quantity, Products.MeasureType as Measure " +
                 "FROM Purchases, Products WHERE Purchases.ProdName = Products.Name";
             command.ExecuteNonQuery();
 
             //Stored Procedures of the table Dishes
-            command.CommandText = "IF EXISTS (SELECT type_desc, type FROM sys.procedures WITH(NOLOCK) WHERE NAME = 'sp_AddDish' AND type = 'P') " +
+            command.CommandText = "IF EXISTS (SELECT type_desc, type FROM sys.procedures WITH(NOLOCK) " +
+                "WHERE NAME = 'sp_AddDish' AND type = 'P') " +
                 "DROP PROCEDURE dbo.sp_AddDish";
             command.ExecuteNonQuery();
             command.CommandText = "CREATE PROC sp_AddDish @Name varchar(20), @MeasureType varchar(10) " +
                 "AS BEGIN INSERT INTO Dishes (Name, MeasureType) values (@Name, @MeasureType) END;";
             command.ExecuteNonQuery();
 
-            command.CommandText = "IF EXISTS (SELECT type_desc, type FROM sys.procedures WITH(NOLOCK) WHERE NAME = 'sp_GetDishes' AND type = 'P') " +
+            command.CommandText = "IF EXISTS (SELECT type_desc, type FROM sys.procedures WITH(NOLOCK) " +
+                "WHERE NAME = 'sp_GetDishes' AND type = 'P') " +
                 "DROP PROCEDURE dbo.sp_GetDishes";
             command.ExecuteNonQuery();
             command.CommandText = "CREATE PROC sp_GetDishes AS SELECT * FROM Dishes";
             command.ExecuteNonQuery();
 
             //Stored Procedures of the table Consumptions
-            command.CommandText = "IF EXISTS (SELECT type_desc, type FROM sys.procedures WITH(NOLOCK) WHERE NAME = 'sp_AddConsumption' AND type = 'P') " +
+            command.CommandText = "IF EXISTS (SELECT type_desc, type FROM sys.procedures WITH(NOLOCK) " +
+                "WHERE NAME = 'sp_AddConsumption' AND type = 'P') " +
                 "DROP PROCEDURE dbo.sp_AddConsumption";
             command.ExecuteNonQuery();
             command.CommandText = "CREATE PROC sp_AddConsumption @DisheName varchar(20), @ProdName Varchar(20), @Quantity float " +
                 "AS BEGIN INSERT INTO ProdConsumptions(DisheName, ProdName, Quantity) values (@DisheName, @ProdName, @Quantity) END;";
             command.ExecuteNonQuery();
 
-            command.CommandText = "IF EXISTS (SELECT type_desc, type FROM sys.procedures WITH(NOLOCK) WHERE NAME = 'sp_GetConsumptions' AND type = 'P') " +
+            command.CommandText = "IF EXISTS (SELECT type_desc, type FROM sys.procedures WITH(NOLOCK) " +
+                "WHERE NAME = 'sp_GetConsumptions' AND type = 'P') " +
                 "DROP PROCEDURE dbo.sp_GetConsumptions";
             command.ExecuteNonQuery();
             command.CommandText = "CREATE PROC sp_GetConsumptions AS" +
@@ -225,7 +239,8 @@ namespace DataRest
             command.ExecuteNonQuery();
 
             //Stored Procedures of the table Sales
-            command.CommandText = "IF EXISTS (SELECT type_desc, type FROM sys.procedures WITH(NOLOCK) WHERE NAME = 'sp_AddSale' AND type = 'P') " +
+            command.CommandText = "IF EXISTS (SELECT type_desc, type FROM sys.procedures WITH(NOLOCK) " +
+                "WHERE NAME = 'sp_AddSale' AND type = 'P') " +
                 "DROP PROCEDURE dbo.sp_AddSale";
             command.ExecuteNonQuery();
             command.CommandText = "CREATE PROC sp_AddSale @DishName varchar(20), @Price money, @Quantity int " +
@@ -239,15 +254,18 @@ namespace DataRest
             command.ExecuteNonQuery();
 
             //Stored Procedures of the table Recipes
-            command.CommandText = "IF EXISTS (SELECT type_desc, type FROM sys.procedures WITH(NOLOCK) WHERE NAME = 'sp_AddRecipe' AND type = 'P') " +
+            command.CommandText = "IF EXISTS (SELECT type_desc, type FROM sys.procedures WITH(NOLOCK) " +
+                "WHERE NAME = 'sp_AddRecipe' AND type = 'P') " +
                 "DROP PROCEDURE dbo.sp_AddRecipe";
             command.ExecuteNonQuery();
             command.CommandText = "CREATE PROC sp_AddRecipe @RecipeName varchar(20), @RecipeText varchar(max) " +
                 "AS BEGIN INSERT INTO Recipes(RecipeName, RecipeText) values (@RecipeName, @RecipeText); " +
-                "UPDATE Dishes SET Dishes.RecipeId = Recipes.Id FROM Dishes INNER JOIN Recipes ON Dishes.id = Recipes.id WHERE Dishes.Name = Recipes.RecipeName; END;";
+                "UPDATE Dishes SET Dishes.RecipeId = Recipes.Id FROM Dishes INNER JOIN Recipes ON Dishes.id = Recipes.id " +
+                "WHERE Dishes.Name = Recipes.RecipeName; END;";
             command.ExecuteNonQuery();
 
-            command.CommandText = "IF EXISTS (SELECT type_desc, type FROM sys.procedures WITH(NOLOCK) WHERE NAME = 'sp_GetRecipes' AND type = 'P') " +
+            command.CommandText = "IF EXISTS (SELECT type_desc, type FROM sys.procedures WITH(NOLOCK) " +
+                "WHERE NAME = 'sp_GetRecipes' AND type = 'P') " +
                 "DROP PROCEDURE dbo.sp_GetRecipes";
             command.ExecuteNonQuery();
             command.CommandText = "CREATE PROC sp_GetRecipes AS SELECT * FROM Recipes";
