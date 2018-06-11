@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataRest", "DataRest\DataRe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DalRest", "DalRest\DalRest.csproj", "{412FD603-6EEC-4C3F-84F8-E57B0A754A56}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wfRestaurant", "WindowsFormsApp1\wfRestaurant.csproj", "{060EED90-5AF3-4808-8414-EC45DEBC76F5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wfRestaurant", "wfRestaurant\wfRestaurant.csproj", "{060EED90-5AF3-4808-8414-EC45DEBC76F5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DalRest.Test", "DalRest.Test\DalRest.Test.csproj", "{B9396034-9208-4636-A53C-E507802ACD7F}"
 EndProject
