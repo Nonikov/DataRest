@@ -199,7 +199,7 @@ namespace DataRest
                 "DROP PROCEDURE dbo.sp_GetPurchases";
             command.ExecuteNonQuery();
             command.CommandText = "CREATE PROC sp_GetPurchases " +
-                "AS SELECT Purchases.Id, Purchases.ProdName, Purchases.Price, Purchases.Quantity, Products.MeasureType as Measure " +
+                "AS SELECT Purchases.Id, Purchases.ProdName, Purchases.Price, Purchases.Quantity, Products.MeasureType as Measure, Purchases.DatePurchase " +
                 "FROM Purchases, Products WHERE Purchases.ProdName = Products.Name";
             command.ExecuteNonQuery();
 

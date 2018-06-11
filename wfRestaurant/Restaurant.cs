@@ -112,6 +112,7 @@ namespace wfRestaurant
             try
             {
                 facade.AddRecipe(textBox4.Text, textBox2.Text);
+                dataGridView4.DataSource = facade.GetDishes();
                 lb_error.Visible = false;
             }
             catch (Exception)
