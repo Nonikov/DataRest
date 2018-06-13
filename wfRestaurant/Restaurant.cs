@@ -7,7 +7,7 @@ namespace wfRestaurant
 {
     public partial class Restaurant : Form
     {
-        static Facade facade;
+        Facade facade;
         public Restaurant()
         {
             InitializeComponent();
