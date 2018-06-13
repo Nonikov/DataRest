@@ -21,8 +21,9 @@ namespace DalRest
             if (type != "")
             {
                 command.CommandText = "EXEC sp_AddProductTypes '" + type + "'";
+                command.ExecuteNonQuery();
             }
-            command.ExecuteNonQuery();
+           
         }
 
         public DataTable GetProductTypes()
@@ -65,8 +66,8 @@ namespace DalRest
             if (name != "" && productTypes != "" && measure != "")
             {
                 command.CommandText = "EXEC sp_AddProduct '" + name + "', '" + productTypes + "', '" + measure + "'";
+                command.ExecuteNonQuery();
             }
-            command.ExecuteNonQuery();
         }
 
         public DataTable GetProducts()
@@ -87,8 +88,8 @@ namespace DalRest
             if (name != "" && price != 0 && quantity != 0)
             {
                 command.CommandText = "EXEC sp_AddPurchase'" + name + "', '" + price + "', '" + quantity + "'";
-            }
-            command.ExecuteNonQuery();
+                command.ExecuteNonQuery();
+            }  
         }
 
         public DataTable GetPurchases()
@@ -109,8 +110,8 @@ namespace DalRest
             if (name != "" && measureType != "")
             {
                 command.CommandText = "EXEC sp_AddDish'" + name + "', '" + measureType + "'";
+                command.ExecuteNonQuery();
             }
-            command.ExecuteNonQuery();
         }
 
         public DataTable GetDishes()
@@ -131,8 +132,8 @@ namespace DalRest
             if (dishName != "" && prodName != "" && quantity != 0)
             {
                 command.CommandText = "EXEC sp_AddConsumption'" + dishName + "', '" + prodName + "', '" + quantity + "'";
+                command.ExecuteNonQuery();
             }
-            command.ExecuteNonQuery();
         }
 
         public DataTable GetConsumptiones()
@@ -153,8 +154,8 @@ namespace DalRest
             if (dishName != "" && price != 0 && quantity != 0)
             {
                 command.CommandText = "EXEC sp_AddSale'" + dishName + "', '" + price + "', '" + quantity + "'";
+                command.ExecuteNonQuery();
             }
-            command.ExecuteNonQuery();
         }
 
         public DataTable GetSales()
@@ -175,8 +176,8 @@ namespace DalRest
             if (recipeName != "" && recipeText != "")
             {
                 command.CommandText = "EXEC sp_AddRecipe'" + recipeName + "', '" + recipeText + "'";
+                command.ExecuteNonQuery();
             }
-            command.ExecuteNonQuery();
         }
 
         public DataTable GetRecipes()
@@ -190,7 +191,5 @@ namespace DalRest
 
             return dataTable;
         }
-
-
     }
 }
