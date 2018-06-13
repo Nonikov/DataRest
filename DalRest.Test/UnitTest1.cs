@@ -1,7 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using DalRest;
-using System.Threading;
 
 namespace DalRest.Test
 {
